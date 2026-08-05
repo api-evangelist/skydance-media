@@ -1,0 +1,177 @@
+generated: '2026-08-05'
+method: probed
+source: live anonymous GET requests against https://skydance.com/wp-json/wp/v2 on 2026-08-05
+api: skydance-media:content
+spec: openapi/skydance-media-content-openapi.yml
+note: >-
+  Real response payloads captured verbatim from the live skydance.com WordPress REST API.
+  Skydance Media publishes no examples of its own and the derived OpenAPI carries none, so
+  these were PROBED, not authored. Every value below came back from an anonymous GET; nothing
+  is synthetic and no field was edited except the truncation noted on each entry. All requests
+  are read-only.
+conventions:
+  anonymous_read: true
+  trimming_param: _fields — comma-separated top-level fields, used on most captures below to keep them readable
+  expansion_param: _embed — inlines author, wp:featuredmedia, wp:term and replies into _embedded
+  pagination_headers: [X-WP-Total, X-WP-TotalPages]
+collection_sizes_observed:
+  pages: 46
+  media: 5431
+  categories: 7
+  posts: 1
+  tags: 0
+  comments: 0
+examples:
+- operationId: getPages
+  request: GET /wp/v2/pages?per_page=2&_fields=id,date,slug,status,type,link,title,parent,menu_order,template
+  status: 200
+  content_type: application/json; charset=UTF-8
+  response_headers:
+    X-WP-Total: '46'
+    X-WP-TotalPages: '46'
+  truncation: per_page=2 and _fields applied on the request; the body below is the complete response
+  response:
+  - id: 7928
+    date: '2026-07-14T17:42:38'
+    slug: madrid-carbon-plan
+    status: publish
+    type: page
+    link: https://skydance.com/madrid-carbon-plan/
+    title:
+      rendered: Reduction Pathway and Decarbonisation Trajectory &#8211; Skydance Animation Madrid, S.L.
+    parent: 0
+    menu_order: 0
+    template: ''
+  - id: 7794
+    date: '2025-09-16T16:26:17'
+    slug: skydance-guest-network-acceptable-use-policy
+    status: publish
+    type: page
+    link: https://skydance.com/skydance-guest-network-acceptable-use-policy/
+    title:
+      rendered: SKYDANCE GUEST NETWORK ACCEPTABLE USE POLICY
+    parent: 0
+    menu_order: 0
+    template: ''
+- operationId: getPages
+  request: GET /wp/v2/pages?slug=patents&_fields=id,slug,link,title,parent,template,status
+  status: 200
+  truncation: slug filter and _fields applied on the request; body is complete
+  note: Slug-based lookup returns a single page without knowing its id.
+  response:
+  - id: 7208
+    slug: patents
+    status: publish
+    link: https://skydance.com/patents/
+    title:
+      rendered: Skydance Patents
+    parent: 0
+    template: ''
+- operationId: getMedia
+  request: GET /wp/v2/media?per_page=2&orderby=id&order=asc&_fields=id,date,slug,type,link,title,alt_text,media_type,mime_type,source_url
+  status: 200
+  truncation: _fields applied; body is complete (only one item came back — see the quirk note)
+  note: >-
+    source_url is the real asset URL — use it rather than constructing one. See the quirk
+    below: this collection must be walked with orderby=id&order=asc.
+  response:
+  - id: 22
+    date: '2015-05-15T07:49:36'
+    slug: slide1
+    type: attachment
+    link: https://skydance.com/slide1/
+    title:
+      rendered: slide1
+    alt_text: ''
+    media_type: image
+    mime_type: image/jpeg
+    source_url: https://skydance.com/wp-content/uploads/2015/05/slide1.jpg
+- operationId: getCategories
+  request: GET /wp/v2/categories?per_page=10&_fields=id,count,name,slug,taxonomy
+  status: 200
+  truncation: none — the collection has 7 terms and all 7 are below
+  note: >-
+    The `count` values are the real signal here: 8 titles in "Available Now", 18 in
+    "DVD/Blu-Ray", 4 in "Coming Soon" — yet GET /wp/v2/posts returns 1 item. Those counted
+    objects live in custom post types that are not registered with the REST API.
+  response:
+  - {id: 12, count: 8, name: Available Now, slug: available-now, taxonomy: category}
+  - {id: 9, count: 4, name: Coming Soon, slug: coming-soon, taxonomy: category}
+  - {id: 10, count: 18, name: DVD/Blu-Ray, slug: disc, taxonomy: category}
+  - {id: 13, count: 0, name: In Development, slug: in-development, taxonomy: category}
+  - {id: 11, count: 0, name: Now Available, slug: now-available, taxonomy: category}
+  - {id: 8, count: 0, name: Now Playing, slug: now-playing, taxonomy: category}
+  - {id: 1, count: 1, name: Uncategorized, slug: uncategorized, taxonomy: category}
+- operationId: getSearch
+  request: GET /wp/v2/search?search=mission&per_page=3
+  status: 200
+  truncation: first 2 results shown; the _links block was removed from each result for readability — every other field is verbatim
+  note: >-
+    Search returns lightweight pointers. Resolve by calling getPagesId when subtype is "page"
+    and getPostsId when subtype is "post". Note that a search for a Skydance film title
+    matches legal and corporate pages, not the film catalog — further confirmation that the
+    title catalog is not in the REST index.
+  response:
+  - {id: 7208, title: Skydance Patents, url: 'https://skydance.com/patents/', type: post, subtype: page}
+  - {id: 6591, title: Skydance UK/EU Personnel Privacy Notice (&#8220;Notice&#8221;), url: 'https://skydance.com/skydance-privacy-eu/',
+     type: post, subtype: page}
+- operationId: getTypes
+  request: GET /wp/v2/types
+  status: 200
+  truncation: 'reduced to {rest_base, name} per type for readability; the key set is complete'
+  note: >-
+    The complete list of post types the REST API exposes. Every entry is WordPress core —
+    there is no film, tv, animation, interactive, sports, news or press_releases type here,
+    although all seven appear in https://skydance.com/sitemap_index.xml.
+  response:
+    post: {rest_base: posts, name: Posts}
+    page: {rest_base: pages, name: Pages}
+    attachment: {rest_base: media, name: Media}
+    nav_menu_item: {rest_base: menu-items, name: Navigation Menu Items}
+    wp_block: {rest_base: blocks, name: Patterns}
+    wp_template: {rest_base: templates, name: Templates}
+    wp_template_part: {rest_base: template-parts, name: Template Parts}
+    wp_global_styles: {rest_base: global-styles, name: Global Styles}
+    wp_navigation: {rest_base: navigation, name: Navigation Menus}
+    wp_font_family: {rest_base: font-families, name: Font Families}
+    wp_font_face: {rest_base: 'font-families/(?P<font_family_id>[\d]+)/font-faces', name: Font Faces}
+- operationId: getPostsId
+  request: GET /wp/v2/posts/999999999
+  status: 404
+  content_type: application/json; charset=UTF-8
+  truncation: none — complete response
+  note: >-
+    Live confirmation of the WordPress error envelope {code, message, data.status}. This is
+    NOT application/problem+json. Catalogued in errors/skydance-media-problem-types.yml.
+  response:
+    code: rest_post_invalid_id
+    message: Invalid post ID.
+    data:
+      status: 404
+- operationId: getSettings
+  request: GET /wp/v2/settings
+  status: 401
+  truncation: none — complete response
+  note: Confirms the anonymous-read / authenticated-write split.
+  response:
+    code: rest_forbidden
+    message: Sorry, you are not allowed to do that.
+    data:
+      status: 401
+quirks:
+- operation: getMedia
+  observed: >-
+    GET /wp/v2/media?per_page=1 returns HTTP 200 with an empty array while the response
+    carries X-WP-Total: 5431 and X-WP-TotalPages: 5431. Adding orderby=id&order=asc returns
+    real attachments.
+  reading: >-
+    The newest attachments are attached to custom post types that are not REST-registered, so
+    they are counted by the query but filtered from the payload. Walk the library with
+    orderby=id&order=asc rather than the default date/desc.
+not_captured:
+- surface: write operations (createPages, updatePagesId, deletePagesId, and every other write)
+  reason: require a WordPress Application Password over HTTP Basic; not attempted
+- surface: getUsers, getUsersId, getUsersMe, getSettings
+  reason: authenticated-only routes; anonymous calls return 401 rest_forbidden
+- surface: the film, television, animation, sports and interactive title catalog
+  reason: not registered with the REST API; no route exposes it

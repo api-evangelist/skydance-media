@@ -1,0 +1,14 @@
+generated: '2026-08-05'
+method: derived
+source: openapi/skydance-media-content-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress Application Passwords over HTTP Basic. Read operations on wp/v2 are
+    anonymous; every write requires credentials issued from the skydance.com WordPress admin.
+  sources:
+  - openapi/skydance-media-content-openapi.yml

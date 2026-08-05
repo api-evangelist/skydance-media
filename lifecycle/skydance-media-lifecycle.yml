@@ -1,0 +1,48 @@
+generated: '2026-08-05'
+method: probed
+source: https://skydance.com/wp-json/ + live probes 2026-08-05
+api: skydance-media:content
+versioning:
+  scheme: uri-path-namespace
+  current: wp/v2
+  docs: null
+  note: >-
+    Version is carried by the WordPress REST namespace segment. Skydance Media does not
+    version an API of its own — the namespace version tracks WordPress core.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No deprecation or sunset policy is published, and no Deprecation or Sunset header was
+    observed on any response. No Deprecation pointer is wired in apis.yml.
+sla:
+  url: null
+  uptime_target: null
+  note: No SLA is published; there is no API product to attach one to.
+status_page:
+  url: null
+  probed:
+  - {url: 'https://status.skydance.com/', result: DNS does not resolve}
+  - {url: 'https://skydance.statuspage.io/', result: '200 but redirects to atlassian.com/software/statuspage — the Statuspage marketing site, not a Skydance status page'}
+  note: >-
+    No status page exists. The skydance.statuspage.io hit is a soft false positive and is
+    recorded here so a later round does not re-report it. No StatusPage pointer is wired.
+changelog:
+  url: null
+  note: >-
+    https://skydance.com/news/ is a company newsroom, not an API changelog. It is wired as
+    Blog (with BlogRSS at /feed/), not ChangeLog. No ChangeLog pointer is wired.
+corporate_lifecycle:
+  event: >-
+    Skydance Media completed its merger with Paramount Global on 7 August 2025, forming
+    Paramount Skydance Corporation. skydance.com remains live as the label site for the
+    Animation, Film, Television, Sports, Interactive and New Media divisions; the privacy
+    policy at https://skydance.com/privacy/ now redirects to privacy.paramount.com/policy/.
+  note: >-
+    Recorded because it is the most likely cause of a future change to this host — the label
+    site may eventually fold into a paramount.com property, taking the wp-json surface with it.
+hosting:
+  server: Apache
+  platform: WordPress (Yoast SEO, Wordfence, WP Smush, Redirection and Contact Form 7 namespaces present in the REST route index)
+deprecated_operations: []

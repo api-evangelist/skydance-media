@@ -1,0 +1,28 @@
+generated: '2026-08-05'
+method: searched
+source: >-
+  Registry searches on npm, PyPI, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist and
+  crates.io plus a GitHub organization probe, 2026-08-05
+sdk_count: 0
+packages: []
+note: >-
+  Skydance Media ships no API client library or SDK — it publishes no product API to wrap and
+  runs no developer program. No GitHub organization exists under the obvious names either:
+  github.com/skydance, /skydance-media, /skydanceinteractive and /skydancegames all return 404
+  from the GitHub API.
+false_positives:
+- registry: npm
+  name: skydance
+  url: https://www.npmjs.com/package/skydance
+  publisher: gesallery (https://github.com/gesallery/skydance)
+  reason: >-
+    "Interface for Skydance lighting" — a community driver for Skydance Wi-Fi LED relay
+    controllers, an unrelated Chinese lighting-controls brand. Not Skydance Media.
+- registry: pypi
+  name: skydance
+  url: https://pypi.org/project/skydance/
+  publisher: Tomas Bedrich (https://github.com/tomasbedrich/skydance)
+  reason: >-
+    "A library for communication with Skydance Wi-Fi relays" — same unrelated lighting brand,
+    a Home Assistant integration dependency. Not Skydance Media.
+recorded_so_a_later_round_does_not_re_report: true

@@ -1,0 +1,58 @@
+generated: '2026-08-05'
+method: generated
+source: openapi/skydance-media-content-openapi.yml
+note: >-
+  Packaged Agent Skills for the only machine-readable surface Skydance Media exposes: the
+  skydance.com WordPress REST content API. Skydance publishes no product API, no developer
+  portal and no skills or AGENTS.md of its own (searched 2026-08-05), so these were GENERATED
+  by the API Evangelist enrichment pipeline. Every operationId referenced in every skill was
+  verified to exist verbatim in the referenced OpenAPI — none was invented. Each skill is
+  read-only by design: all write operations on this API require a WordPress Application
+  Password that no third party holds.
+api: skydance-media:content
+base_url: https://skydance.com/wp-json/wp/v2
+auth: none (anonymous read; writes are gated and out of scope for these skills)
+skills:
+- file: skydance-media-read-site-content.md
+  name: Read Skydance Media site content
+  description: >-
+    Page through the corporate, legal and marketing pages skydance.com publishes through its
+    WordPress REST API, and resolve the taxonomy behind them.
+  api: openapi/skydance-media-content-openapi.yml
+  operations: [getPages, getPagesId, getPosts, getPostsId, getCategories, getCategoriesId, getTags, getTypes]
+- file: skydance-media-search-and-resolve.md
+  name: Search skydance.com and resolve results
+  description: >-
+    Run a cross-content-type search and resolve each lightweight result pointer into the full
+    page or post object, branching on subtype.
+  api: openapi/skydance-media-content-openapi.yml
+  operations: [getSearch, getPagesId, getPostsId, getTypes, getTypesType, getStatuses]
+- file: skydance-media-media-library.md
+  name: Walk the Skydance Media library
+  description: >-
+    Enumerate the 5,431-item media library and pull real asset URLs, MIME types and alt text,
+    working around the empty-first-page quirk on the default ordering.
+  api: openapi/skydance-media-content-openapi.yml
+  operations: [getMedia, getMediaId, getPagesId]
+cross_references:
+  conventions: conventions/skydance-media-conventions.yml
+  errors: errors/skydance-media-problem-types.yml
+  data_model: data-model/skydance-media-data-model.yml
+  authentication: authentication/skydance-media-authentication.yml
+  examples: examples/skydance-media-examples.yml
+not_covered:
+- surface: Write operations on wp/v2
+  reason: >-
+    Every create/update/delete operation requires a WordPress Application Password issued from
+    the skydance.com admin. No third-party agent can hold one, so no write skill is authored.
+- surface: The film, television, animation, sports and interactive title catalog
+  reason: >-
+    Those are custom post types that are not registered with the REST API (confirmed against
+    GET /wp/v2/types, 2026-08-05). No route returns them, so there is nothing to ground a
+    skill in. They are reachable only as HTML via sitemap_index.xml.
+- surface: /wp/v2/users and /wp/v2/settings
+  reason: authenticated-only; anonymous calls return HTTP 401 rest_forbidden.
+- surface: The plugin namespaces (yoast/v1, redirection/v1, wordfence/v1, wp-smush/v1, contact-form-7/v1)
+  reason: >-
+    Administrative surfaces. They are in the route index but are for site operators, not API
+    consumers, and their write routes are capability-gated. No skill targets them.

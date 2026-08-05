@@ -1,0 +1,122 @@
+generated: '2026-08-05'
+method: derived
+source: >-
+  openapi/skydance-media-content-openapi.yml plus live anonymous GET payloads observed on
+  https://skydance.com/wp-json/wp/v2 on 2026-08-05
+api: skydance-media:content
+note: >-
+  Entity graph of the skydance.com WordPress content API. Relationships are derived from the
+  id-reference fields and _links relations present on real payloads — nothing inferred beyond
+  what the API returns.
+entities:
+- name: page
+  collection: /wp/v2/pages
+  description: Marketing, corporate and legal page (46 published at time of harvest — terms, privacy, patents, careers, guest-network policy, Madrid decarbonisation plan).
+  id: {field: id, type: integer}
+  key_fields: [id, date, modified, slug, status, type, link, title, content, excerpt, author,
+    featured_media, parent, menu_order, template, meta]
+  operations: [getPages, getPagesId, createPages, createPagesId, replacePagesId, updatePagesId, deletePagesId]
+- name: media
+  collection: /wp/v2/media
+  description: Media library attachment (5431 counted; images, posters, documents).
+  id: {field: id, type: integer}
+  key_fields: [id, date, slug, type, link, title, alt_text, media_type, mime_type, source_url, media_details, post]
+  operations: [getMedia, getMediaId, createMedia, createMediaId, replaceMediaId, updateMediaId, deleteMediaId]
+- name: post
+  collection: /wp/v2/posts
+  description: >-
+    Core WordPress post. Only one exists (the 2015 "hello-world" placeholder) — the site's
+    editorial and title content lives in custom post types that are not REST-registered.
+  id: {field: id, type: integer}
+  key_fields: [id, date, slug, status, type, link, title, content, excerpt, author,
+    featured_media, categories, tags, format, meta]
+  operations: [getPosts, getPostsId, createPosts, createPostsId, replacePostsId, updatePostsId, deletePostsId]
+- name: category
+  collection: /wp/v2/categories
+  description: >-
+    Release-state term (Available Now, Coming Soon, DVD/Blu-Ray, In Development, Now Available,
+    Now Playing, Uncategorized). The counts point at custom-post-type objects the API does not return.
+  id: {field: id, type: integer}
+  key_fields: [id, name, slug, parent, count, taxonomy, description]
+  operations: [getCategories, getCategoriesId, createCategories, replaceCategoriesId, updateCategoriesId, deleteCategoriesId]
+- name: tag
+  collection: /wp/v2/tags
+  description: Post tag term. Empty collection (0 terms).
+  id: {field: id, type: integer}
+  key_fields: [id, name, slug, count, taxonomy]
+  operations: [getTags, getTagsId]
+- name: comment
+  collection: /wp/v2/comments
+  description: Comment on a post. Empty collection (0 comments).
+  id: {field: id, type: integer}
+  key_fields: [id, post, parent, author, author_name, date, content, status]
+  operations: [getComments, getCommentsId]
+- name: user
+  collection: /wp/v2/users
+  description: Author record. Not readable anonymously — the collection returns 401 rest_forbidden.
+  id: {field: id, type: integer}
+  key_fields: [id, name, slug, description, link, avatar_urls]
+  operations: [getUsers, getUsersId, getUsersMe]
+  access: authenticated-only
+- name: post_type
+  collection: /wp/v2/types
+  description: Registry of the post types the REST API exposes. All 11 are WordPress core.
+  id: {field: slug, type: string}
+  key_fields: [slug, name, rest_base, rest_namespace, hierarchical, taxonomies]
+  operations: [getTypes, getTypesType]
+- name: taxonomy
+  collection: /wp/v2/taxonomies
+  description: Registry of taxonomies (category, post_tag, and the block-pattern taxonomy).
+  id: {field: slug, type: string}
+  key_fields: [slug, name, rest_base, types, hierarchical]
+  operations: [getTaxonomies, getTaxonomiesTaxonomy]
+- name: status
+  collection: /wp/v2/statuses
+  description: Registry of post statuses (publish, future, draft, pending, private).
+  id: {field: slug, type: string}
+  key_fields: [slug, name, public, queryable]
+  operations: [getStatuses, getStatusesStatus]
+- name: search_result
+  collection: /wp/v2/search
+  description: Cross-type site search result pointing back at a page or post.
+  key_fields: [id, title, url, type, subtype]
+  operations: [getSearch]
+- name: setting
+  collection: /wp/v2/settings
+  description: Site settings object. Not readable anonymously — returns 401 rest_forbidden.
+  operations: [getSettings, updateSettings, replaceSettings]
+  access: authenticated-only
+relationships:
+- {from: page, to: page, kind: belongs_to, via: parent}
+- {from: page, to: user, kind: belongs_to, via: author, link_rel: author}
+- {from: page, to: media, kind: has_one, via: featured_media, link_rel: 'wp:featuredmedia'}
+- {from: post, to: user, kind: belongs_to, via: author, link_rel: author}
+- {from: post, to: media, kind: has_one, via: featured_media, link_rel: 'wp:featuredmedia'}
+- {from: post, to: category, kind: has_many, via: categories, link_rel: 'wp:term'}
+- {from: post, to: tag, kind: has_many, via: tags, link_rel: 'wp:term'}
+- {from: post, to: comment, kind: has_many, via: null, link_rel: replies}
+- {from: post, to: media, kind: has_many, via: null, link_rel: 'wp:attachment'}
+- {from: media, to: post, kind: belongs_to, via: post}
+- {from: comment, to: post, kind: belongs_to, via: post}
+- {from: comment, to: comment, kind: belongs_to, via: parent}
+- {from: category, to: category, kind: belongs_to, via: parent}
+- {from: post_type, to: taxonomy, kind: has_many, via: taxonomies}
+- {from: taxonomy, to: post_type, kind: has_many, via: types}
+- {from: search_result, to: page, kind: belongs_to, via: id, note: 'resolved by subtype = page'}
+- {from: search_result, to: post, kind: belongs_to, via: id, note: 'resolved by subtype = post'}
+traversal:
+  embed_param: _embed
+  note: >-
+    Adding _embed to any collection or item request inlines author, wp:featuredmedia, wp:term
+    and replies into an _embedded object, so the readable part of the graph is walkable in one
+    request. The author relation resolves to a 401-gated resource, so _embed silently omits it
+    for anonymous callers.
+not_modelled:
+- entity: film / television / animation / interactive / sports title
+  reason: >-
+    These are custom post types on skydance.com (they appear in sitemap_index.xml as
+    film-sitemap.xml, tv-sitemap.xml, animation-sitemap.xml, interactive-sitemap.xml,
+    sports-sitemap.xml, news-sitemap.xml and press_releases-sitemap.xml) but none is
+    registered with the REST API — GET /wp/v2/types does not list them and no route returns
+    them. The entity exists in the CMS; it is not part of the machine-readable contract, so it
+    is not modelled here.

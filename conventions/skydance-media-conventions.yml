@@ -1,0 +1,112 @@
+generated: '2026-08-05'
+method: derived
+source: >-
+  openapi/skydance-media-content-openapi.yml (derived from https://skydance.com/wp-json/)
+  plus live response headers observed on GET /wp-json/wp/v2/posts and /wp/v2/pages, 2026-08-05
+api: skydance-media:content
+authentication:
+  anonymous_read: true
+  scheme: WordPress Application Passwords over HTTP Basic
+  browser_scheme: logged-in cookie + X-WP-Nonce header
+  developer_signup: null
+  note: >-
+    Skydance Media runs no developer program, so no third party can obtain a credential.
+    Treat this API as read-only in practice.
+  artifact: authentication/skydance-media-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency key header or parameter is exposed on any route in the discovery document,
+    and none is documented. No Idempotency pointer is wired in apis.yml — the provider has no
+    idempotency contract to advertise.
+pagination:
+  style: page-number
+  request_params:
+  - {name: page, type: integer, default: 1, minimum: 1}
+  - {name: per_page, type: integer, default: 10, minimum: 1, maximum: 100}
+  - {name: offset, type: integer, note: available on collection routes}
+  response_headers:
+  - {name: X-WP-Total, meaning: total items in the collection}
+  - {name: X-WP-TotalPages, meaning: total pages at the current per_page}
+  link_header: 'RFC 8288 Link header with rel="next" / rel="prev"'
+  observed: 'GET /wp/v2/pages?per_page=1 -> X-WP-Total: 46; GET /wp/v2/media?per_page=1 -> X-WP-Total: 5431'
+  caveat: >-
+    X-WP-Total is a count of the query, not of the payload. On /wp/v2/media the default
+    date/desc ordering returns an empty array against a total of 5431 because the newest
+    attachments hang off non-REST custom post types. Do not treat the header as a promise
+    that the page is non-empty.
+field_selection:
+  sparse_fields:
+    param: _fields
+    note: comma-separated list of top-level fields to return
+  expansion:
+    param: _embed
+    note: >-
+      Inlines linked resources (author, featured media, terms, replies) into _embedded,
+      driven by the _links relations each resource carries.
+  context:
+    param: context
+    values: [view, embed, edit]
+    default: view
+    note: edit context requires authentication
+ordering_and_filtering:
+  params: [search, order, orderby, slug, status, after, before, modified_after, modified_before,
+    include, exclude, offset, parent, menu_order, media_type, mime_type, author]
+  note: taken verbatim from the route args in the discovery document
+metadata:
+  field: meta
+  note: registered post meta; empty on the anonymous responses observed
+request_tracing:
+  request_id_header: null
+  note: no request-id or correlation header is emitted
+versioning:
+  scheme: uri-path-namespace
+  current: wp/v2
+  namespaces_present:
+  - wp/v2
+  - oembed/1.0
+  - contact-form-7/v1
+  - redirection/v1
+  - wordfence/v1
+  - yoast/v1
+  - wp-smush/v1
+  - wpmudev_pcs/v1
+  - wp-site-health/v1
+  - wp-block-editor/v1
+  - batch/v1
+  note: >-
+    The version segment tracks WordPress core, not a Skydance release train. Only wp/v2 and
+    oembed/1.0 are content namespaces; the rest are plugin/administrative namespaces that
+    require authentication.
+  artifact: lifecycle/skydance-media-lifecycle.yml
+error_envelope:
+  format: wordpress-rest
+  rfc9457: false
+  shape: '{"code": "<string>", "message": "<human string>", "data": {"status": <int>}}'
+  observed: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  artifact: errors/skydance-media-problem-types.yml
+rate_limiting:
+  documented: false
+  headers_observed: []
+  note: >-
+    No X-RateLimit-* or Retry-After headers observed. robots.txt sets no Crawl-delay and
+    disallows nothing. A Wordfence namespace is registered in the route index, so origin-level
+    blocking may exist but is not advertised. Pace requests deliberately.
+batch:
+  endpoint: /wp-json/batch/v1
+  note: WordPress core batch endpoint, present in the route index; POST only and authenticated.
+cors:
+  access_control_allow_headers: [Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type]
+  access_control_expose_headers: [X-WP-Total, X-WP-TotalPages, Link]
+  observed_response_headers: ['Allow: GET', 'X-Robots-Tag: noindex', 'X-Content-Type-Options: nosniff',
+    'Strict-Transport-Security: max-age=31536000; includeSubDomains']
+discovery:
+  route_index: https://skydance.com/wp-json/
+  link_header: '<https://skydance.com/wp-json/>; rel="https://api.w.org/"'
+  note: Every resource carries a _links block; the API is walkable from the route index alone.
+cross_references:
+  errors: errors/skydance-media-problem-types.yml
+  lifecycle: lifecycle/skydance-media-lifecycle.yml
+  authentication: authentication/skydance-media-authentication.yml
+  data_model: data-model/skydance-media-data-model.yml
+  examples: examples/skydance-media-examples.yml

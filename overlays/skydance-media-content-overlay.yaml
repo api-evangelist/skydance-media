@@ -1,0 +1,60 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Skydance Media Content API
+  version: 1.0.0
+x-generated: '2026-08-05'
+x-method: generated
+x-source: openapi/skydance-media-content-openapi.yml
+x-note: >-
+  Our enhancements to the DERIVED WordPress REST definition. The base document is a
+  mechanical transcription of https://skydance.com/wp-json/ and is never mutated; everything
+  API Evangelist adds — provenance, the non-RFC-9457 error contract, the pagination contract,
+  the anonymous-read/authenticated-write split, and the custom-post-type caveat — lives here.
+extends: openapi/skydance-media-content-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profile: https://apis.io/provider/skydance-media
+    x-apievangelist-derived: true
+    x-provider-published: false
+    x-content-caveat: >-
+      skydance.com registers custom post types for film, tv, animation, interactive, sports,
+      news and press_releases (all present in the Yoast sitemap index), but none of them is
+      registered with the REST API. GET /wp/v2/posts returns a single 2015 placeholder post.
+      The title catalog is NOT reachable through this API.
+- target: $.info
+  update:
+    x-error-format:
+      style: wordpress-rest
+      rfc9457: false
+      shape: '{"code": "<slug>", "message": "<human string>", "data": {"status": <int>}}'
+      catalog: errors/skydance-media-problem-types.yml
+- target: $.info
+  update:
+    x-pagination:
+      style: page-number
+      params: [page, per_page, offset]
+      per_page_max: 100
+      response_headers: [X-WP-Total, X-WP-TotalPages]
+      link_header: RFC 8288 Link with rel="next" / rel="prev"
+      catalog: conventions/skydance-media-conventions.yml
+- target: $.info
+  update:
+    x-access-model:
+      anonymous_read: true
+      authenticated_write: true
+      write_scheme: WordPress Application Passwords over HTTP Basic
+      observed: 'Allow: GET on anonymous GET /wp/v2/posts; GET /wp/v2/settings and /wp/v2/users return 401 rest_forbidden'
+      catalog: authentication/skydance-media-authentication.yml
+- target: $.paths['/wp/v2/media'].get
+  update:
+    x-observed-quirk: >-
+      With default ordering (date, desc) the collection returns an empty array while
+      X-WP-Total reports 5431 — the newest attachments are attached to non-REST custom post
+      types and are filtered out after the count. Use orderby=id&order=asc to walk the
+      library. Observed 2026-08-05.
+- target: $.paths['/wp/v2/search'].get
+  update:
+    x-usage-note: >-
+      Search returns lightweight pointers {id, title, url, type, subtype}. Resolve with
+      getPagesId when subtype is "page" and getPostsId when subtype is "post".

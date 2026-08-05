@@ -1,0 +1,62 @@
+generated: '2026-08-05'
+method: probed
+source: live HTTP probes, 2026-08-05
+host: https://skydance.com
+note: >-
+  Every /.well-known/ discovery path probed on skydance.com returned 404 — the WordPress
+  404 template, HTML, 32,821 bytes, identical on every path (checked so a soft-200 catch-all
+  could not be mistaken for a hit). Recorded as an honest negative: no WellKnown, SecurityTxt
+  or AgentCard pointer is wired in apis.yml because none of these documents exists.
+  api.skydance.com, developer.skydance.com, skydancegames.com and skydancesports.com do not
+  resolve. dev.skydance.com resolves but returns HTTP 401 (a staging/basic-auth host, not a
+  developer portal). skydanceanimation.com, skydanceinteractive.com and skydancenewmedia.com
+  all 301 to skydance.com.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json
+  status: 404
+- path: /.well-known/agent.json
+  status: 404
+- path: /llms.txt
+  status: 404
+- path: /openapi.json
+  status: 404
+- path: /swagger.json
+  status: 404
+- path: /api-docs
+  status: 404
+other:
+- path: /robots.txt
+  status: 200
+  note: 'Yoast block; ''User-agent: * / Disallow:'' — nothing disallowed. Points at /sitemap_index.xml.'
+- path: /sitemap_index.xml
+  status: 200
+  note: >-
+    Yoast sitemap index covering post, page, animation, film, interactive, news,
+    press_releases, tv, sports and taxonomy sitemaps.
+- path: /feed/
+  status: 200
+  note: WordPress RSS 2.0 feed (application/rss+xml). Wired as BlogRSS.
+- path: /wp-json/
+  status: 200
+  note: >-
+    WordPress REST route-discovery document — the real machine-readable contract on this
+    host. 210 routes across 10 namespaces (oembed/1.0, contact-form-7/v1, redirection/v1,
+    wordfence/v1, yoast/v1, wp-smush/v1, wp/v2, wp-site-health/v1, wp-block-editor/v1,
+    wpmudev_pcs/v1). Saved verbatim to openapi/_source/skydance-media-wp-json-root.json and
+    derived into openapi/skydance-media-content-openapi.yml.
+- path: /wp-json/oembed/1.0/embed
+  status: 404
+  note: >-
+    The oembed namespace is registered in the route index, but the endpoint returns 404 for
+    a skydance.com URL. Recorded so a later round does not re-report it as a working oEmbed
+    provider.

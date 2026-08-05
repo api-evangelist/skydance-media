@@ -1,23 +1,136 @@
 aid: skydance-media
 name: Skydance Media
-description: 'Skydance Media is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Skydance Media is a Santa Monica, California diversified entertainment
+  company founded in 2010 by David Ellison, producing event-scale film, television,
+  animation, sports and interactive entertainment — Top Gun: Maverick, the Mission:
+  Impossible films, Reacher, Grace and Frankie, Spellbound, and the VR titles The Walking
+  Dead: Saints & Sinners and Behemoth through Skydance Interactive and Skydance New
+  Media. Skydance completed its merger with Paramount Global on 7 August 2025 to form
+  Paramount Skydance Corporation, and skydance.com continues to operate as the label
+  site for the Animation, Film, Television, Sports, Interactive and New Media divisions.
+  Skydance publishes no developer program, no API documentation, no SDK and no OpenAPI
+  of its own. The only machine-readable, anonymously readable surface on its own host
+  is the WordPress REST API at skydance.com/wp-json — the CMS content API behind the
+  label site, which serves pages, the media library, categories and site search as JSON.'
 url: https://raw.githubusercontent.com/api-evangelist/skydance-media/refs/heads/main/apis.yml
+image: https://skydance.com/wp-content/uploads/2023/03/cropped-skydance.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-05'
 modified: '2026-08-05'
 tags:
 - Company
-apis: []
+- Entertainment
+- Media
+- Film
+- Television
+- Animation
+- Video Games
+- Sports
+- Content
+- WordPress
+apis:
+- aid: skydance-media:content
+  name: Skydance Media Content API (WordPress REST wp/v2)
+  description: 'The anonymously readable WordPress REST API that skydance.com serves at
+    /wp-json/wp/v2 — marketing and legal pages, the media library, categories, tags,
+    comments, post types and a site-wide search endpoint, returned as JSON with
+    page/per_page pagination and X-WP-Total / X-WP-TotalPages headers. This is the CMS
+    content API, not a Skydance product API; Skydance publishes no OpenAPI for it, so the
+    definition in this repo was derived mechanically from the live route-discovery
+    document at https://skydance.com/wp-json/. The site''s film, television, animation,
+    sports and interactive catalog lives in custom post types that are NOT registered with
+    the REST API — GET /wp/v2/posts returns a single 2015 placeholder post — so the
+    readable content is pages, media and taxonomy, not the title catalog.'
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Content
+  - Media
+  - Search
+  - WordPress
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-content-openapi.yml
+  - type: Overlay
+    url: overlays/skydance-media-content-overlay.yaml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+x-enrichment:
+  date: '2026-08-05'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/skydance-media-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/skydance-media-agentic-access.yml
+- type: Authentication
+  url: authentication/skydance-media-authentication.yml
+- type: Conventions
+  url: conventions/skydance-media-conventions.yml
+- type: Conformance
+  url: conformance/skydance-media-conformance.yml
+- type: Lifecycle
+  url: lifecycle/skydance-media-lifecycle.yml
+- type: Packages
+  url: packages/skydance-media-packages.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/skydance-media-llms.txt
 - type: Website
+  url: https://skydance.com/
+- type: About
+  url: https://skydance.com/about/
+- type: Blog
+  url: https://skydance.com/news/
+- type: BlogRSS
+  url: https://skydance.com/feed/
+- type: FAQ
+  url: https://skydance.com/faq/
+- type: Careers
+  url: https://skydance.com/careers/
+- type: TermsOfService
+  url: https://skydance.com/terms/
+- type: PrivacyPolicy
+  url: https://skydance.com/privacy/
+- type: Patents
+  url: https://skydance.com/patents/
+- type: Film
+  url: https://skydance.com/film/
+- type: Television
+  url: https://skydance.com/tv/
+- type: Animation
+  url: https://skydance.com/animation/
+- type: Interactive
+  url: https://skydance.com/interactive/
+- type: Sports
+  url: https://skydance.com/sports/
+- type: ParentCompany
+  url: https://www.paramount.com/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/skydancemedia
+- type: Twitter
+  url: https://twitter.com/Skydance
+- type: Facebook
+  url: https://www.facebook.com/SkydanceMedia
+- type: Instagram
+  url: https://www.instagram.com/skydance/
+- type: YouTube
+  url: https://www.youtube.com/skydance
+- type: SecondaryMarket
   url: https://forgeglobal.com/skydance-media_stock/
