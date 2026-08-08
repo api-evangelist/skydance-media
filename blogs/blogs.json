@@ -1,0 +1,21 @@
+{
+  "repo": "skydance-media",
+  "feeds": [
+    {
+      "source": "https://skydance.com/about/",
+      "feed_url": "https://skydance.com/about/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    },
+    {
+      "source": "https://skydance.com/news/",
+      "feed_url": "https://skydance.com/news/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-06T14:08:46Z"
+}
