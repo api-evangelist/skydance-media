@@ -33,30 +33,192 @@ tags:
 - Content
 - WordPress
 apis:
-- aid: skydance-media:content
-  name: Skydance Media Content API (WordPress REST wp/v2)
-  description: 'The anonymously readable WordPress REST API that skydance.com serves at
-    /wp-json/wp/v2 — marketing and legal pages, the media library, categories, tags,
-    comments, post types and a site-wide search endpoint, returned as JSON with
-    page/per_page pagination and X-WP-Total / X-WP-TotalPages headers. This is the CMS
-    content API, not a Skydance product API; Skydance publishes no OpenAPI for it, so the
-    definition in this repo was derived mechanically from the live route-discovery
-    document at https://skydance.com/wp-json/. The site''s film, television, animation,
-    sports and interactive catalog lives in custom post types that are NOT registered with
-    the REST API — GET /wp/v2/posts returns a single 2015 placeholder post — so the
-    readable content is pages, media and taxonomy, not the title catalog.'
+- aid: skydance-media:skydance-media-categories-api
+  name: Skydance Media Categories API
+  description: The Categories API from Skydance Media — 2 operation(s) for categories.
   humanURL: https://skydance.com/
   baseURL: https://skydance.com/wp-json/wp/v2
   tags:
-  - Content
-  - Media
-  - Search
-  - WordPress
+  - Categories
   properties:
   - type: OpenAPI
-    url: openapi/skydance-media-content-openapi.yml
-  - type: Overlay
-    url: overlays/skydance-media-content-overlay.yaml
+    url: openapi/skydance-media-categories-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-comments-api
+  name: Skydance Media Comments API
+  description: The Comments API from Skydance Media — 2 operation(s) for comments.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-comments-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-media-api
+  name: Skydance Media Media API
+  description: The Media API from Skydance Media — 2 operation(s) for media.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-media-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-pages-api
+  name: Skydance Media Pages API
+  description: The Pages API from Skydance Media — 2 operation(s) for pages.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-pages-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-posts-api
+  name: Skydance Media Posts API
+  description: The Posts API from Skydance Media — 2 operation(s) for posts.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-posts-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-search-api
+  name: Skydance Media Search API
+  description: The Search API from Skydance Media — 1 operation(s) for search.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-search-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-settings-api
+  name: Skydance Media Settings API
+  description: The Settings API from Skydance Media — 1 operation(s) for settings.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-settings-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-statuses-api
+  name: Skydance Media Statuses API
+  description: The Statuses API from Skydance Media — 2 operation(s) for statuses.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-statuses-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-tags-api
+  name: Skydance Media Tags API
+  description: The Tags API from Skydance Media — 2 operation(s) for tags.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-tags-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-taxonomies-api
+  name: Skydance Media Taxonomies API
+  description: The Taxonomies API from Skydance Media — 2 operation(s) for taxonomies.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Taxonomies
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-taxonomies-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-types-api
+  name: Skydance Media Types API
+  description: The Types API from Skydance Media — 2 operation(s) for types.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Types
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-types-api-openapi.yml
+  - type: DataModel
+    url: data-model/skydance-media-data-model.yml
+  - type: ErrorCatalog
+    url: errors/skydance-media-problem-types.yml
+  - type: Examples
+    url: examples/skydance-media-examples.yml
+- aid: skydance-media:skydance-media-users-api
+  name: Skydance Media Users API
+  description: The Users API from Skydance Media — 3 operation(s) for users.
+  humanURL: https://skydance.com/
+  baseURL: https://skydance.com/wp-json/wp/v2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/skydance-media-users-api-openapi.yml
   - type: DataModel
     url: data-model/skydance-media-data-model.yml
   - type: ErrorCatalog
@@ -74,6 +236,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/skydance-media-content-overlay.yaml
 - type: DomainSecurity
   url: security/skydance-media-domain-security.yml
 - type: AgenticAccess
