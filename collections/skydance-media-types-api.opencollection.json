@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Skydance Media Content API (WordPress REST wp/v2) Types API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://skydance.com/wp-json/wp/v2/types",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/types"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/types/{type}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://skydance.com/wp-json/wp/v2/types/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Path parameter declared by the WordPress route pattern."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/types/{type}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Skydance Media Content API (WordPress REST wp/v2) Taxonomies API
+  version: wp/v2
+  summary: 'Public read surface of skydance.com content: pages, the media library, taxonomies, comments and site search.'
+  description: 'Skydance Media publishes skydance.com on WordPress, which exposes the WordPress REST API at https://skydance.com/wp-json/. The wp/v2 namespace is anonymously readable and returns the site''s pages, media library, categories, tags and a site-wide search endpoint as JSON.
+
+
+    This document was DERIVED mechanically by API Evangelist from the route-discovery document served at https://skydance.com/wp-json/ on 2026-08-05 — every path, method and parameter below is taken verbatim from that descriptor. Skydance Media does not publish an OpenAPI definition of its own, and this is not a product API: it is the content API the CMS exposes. Write operations exist on these routes but require authentication (WordPress Application Passwords over HTTP Basic); anonymous callers receive HTTP 401 rest_forbidden.'
+  contact:
+    name: Skydance Media
+    url: https://skydance.com/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://skydance.com/wp-json/
+  x-derived-on: '2026-08-05'
+  x-provider-published: false
+servers:
+- url: https://skydance.com/wp-json
+  description: Production
+tags:
+- name: Taxonomies
+paths:
+  /wp/v2/taxonomies:
+    get:
+      operationId: getTaxonomies
+      summary: GET /wp/v2/taxonomies
+      tags:
+      - Taxonomies
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to taxonomies associated with a specific post type.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type:
+                - array
+                - object
+        '400':
+          $ref: '#/components/responses/WpError'
+        '401':
+          $ref: '#/components/responses/WpError'
+        '404':
+          $ref: '#/components/responses/WpError'
+  /wp/v2/taxonomies/{taxonomy}:
+    parameters:
+    - name: taxonomy
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter declared by the WordPress route pattern.
+    get:
+      operationId: getTaxonomiesTaxonomy
+      summary: GET /wp/v2/taxonomies/{taxonomy}
+      tags:
+      - Taxonomies
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type:
+                - array
+                - object
+        '400':
+          $ref: '#/components/responses/WpError'
+        '401':
+          $ref: '#/components/responses/WpError'
+        '404':
+          $ref: '#/components/responses/WpError'
+components:
+  responses:
+    WpError:
+      description: 'WordPress REST error envelope (not RFC 9457). {"code": "<slug>", "message": "<human string>", "data": {"status": <int>}}'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              data:
+                type: object
+                properties:
+                  status:
+                    type: integer
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords over HTTP Basic. Read operations on wp/v2 are anonymous; every write requires credentials issued from the skydance.com WordPress admin.
