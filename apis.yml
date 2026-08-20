@@ -151,6 +151,8 @@ apis:
   humanURL: https://skydance.com/
   baseURL: https://skydance.com/wp-json/wp/v2
   tags:
+  - Status
+  tags_raw:
   - Statuses
   properties:
   - type: OpenAPI
@@ -183,6 +185,8 @@ apis:
   humanURL: https://skydance.com/
   baseURL: https://skydance.com/wp-json/wp/v2
   tags:
+  - taxonomies
+  tags_raw:
   - Taxonomies
   properties:
   - type: OpenAPI
@@ -215,6 +219,8 @@ apis:
   humanURL: https://skydance.com/
   baseURL: https://skydance.com/wp-json/wp/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
