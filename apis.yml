@@ -13,6 +13,18 @@ description: 'Skydance Media is a Santa Monica, California diversified entertain
   is the WordPress REST API at skydance.com/wp-json — the CMS content API behind the
   label site, which serves pages, the media library, categories and site search as JSON.'
 url: https://raw.githubusercontent.com/api-evangelist/skydance-media/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://skydance.com/wp-content/uploads/2023/03/cropped-skydance.png
 x-type: company
 x-source: harvest:secondary-market
