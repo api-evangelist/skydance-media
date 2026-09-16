@@ -1,17 +1,15 @@
 aid: skydance-media
 name: Skydance Media
-description: 'Skydance Media is a Santa Monica, California diversified entertainment
-  company founded in 2010 by David Ellison, producing event-scale film, television,
-  animation, sports and interactive entertainment — Top Gun: Maverick, the Mission:
-  Impossible films, Reacher, Grace and Frankie, Spellbound, and the VR titles The Walking
-  Dead: Saints & Sinners and Behemoth through Skydance Interactive and Skydance New
-  Media. Skydance completed its merger with Paramount Global on 7 August 2025 to form
-  Paramount Skydance Corporation, and skydance.com continues to operate as the label
-  site for the Animation, Film, Television, Sports, Interactive and New Media divisions.
-  Skydance publishes no developer program, no API documentation, no SDK and no OpenAPI
-  of its own. The only machine-readable, anonymously readable surface on its own host
-  is the WordPress REST API at skydance.com/wp-json — the CMS content API behind the
-  label site, which serves pages, the media library, categories and site search as JSON.'
+description: 'Skydance Media is a Santa Monica, California diversified entertainment company founded in
+  2010 by David Ellison, producing event-scale film, television, animation, sports and interactive entertainment
+  — Top Gun: Maverick, the Mission: Impossible films, Reacher, Grace and Frankie, Spellbound, and the
+  VR titles The Walking Dead: Saints & Sinners and Behemoth through Skydance Interactive and Skydance
+  New Media. Skydance completed its merger with Paramount Global on 7 August 2025 to form Paramount Skydance
+  Corporation, and skydance.com continues to operate as the label site for the Animation, Film, Television,
+  Sports, Interactive and New Media divisions. Skydance publishes no developer program, no API documentation,
+  no SDK and no OpenAPI of its own. The only machine-readable, anonymously readable surface on its own
+  host is the WordPress REST API at skydance.com/wp-json — the CMS content API behind the label site,
+  which serves pages, the media library, categories and site search as JSON.'
 url: https://raw.githubusercontent.com/api-evangelist/skydance-media/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -45,7 +43,7 @@ x-tier: profiled
 x-tier-reason: enrichment-pipeline
 specificationVersion: '0.23'
 created: '2026-08-05'
-modified: '2026-08-05'
+modified: '2026-09-16'
 tags:
 - Company
 - Entertainment
@@ -91,7 +89,7 @@ apis:
   - type: Examples
     url: examples/skydance-media-examples.yml
 - aid: skydance-media:skydance-media-media-api
-  name: Skydance Media Media API
+  name: Skydance Media API
   description: The Media API from Skydance Media — 2 operation(s) for media.
   humanURL: https://skydance.com/
   baseURL: https://skydance.com/wp-json/wp/v2
