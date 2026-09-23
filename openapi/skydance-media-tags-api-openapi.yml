@@ -3,10 +3,7 @@ info:
   title: Skydance Media Content API (WordPress REST wp/v2) Tags API
   version: wp/v2
   summary: 'Public read surface of skydance.com content: pages, the media library, taxonomies, comments and site search.'
-  description: 'Skydance Media publishes skydance.com on WordPress, which exposes the WordPress REST API at https://skydance.com/wp-json/. The wp/v2 namespace is anonymously readable and returns the site''s pages, media library, categories, tags and a site-wide search endpoint as JSON.
-
-
-    This document was DERIVED mechanically by API Evangelist from the route-discovery document served at https://skydance.com/wp-json/ on 2026-08-05 — every path, method and parameter below is taken verbatim from that descriptor. Skydance Media does not publish an OpenAPI definition of its own, and this is not a product API: it is the content API the CMS exposes. Write operations exist on these routes but require authentication (WordPress Application Passwords over HTTP Basic); anonymous callers receive HTTP 401 rest_forbidden.'
+  description: Skydance Media publishes skydance.com on WordPress, which exposes the WordPress REST API at https://skydance.com/wp-json/.
   contact:
     name: Skydance Media
     url: https://skydance.com/

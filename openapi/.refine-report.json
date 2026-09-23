@@ -1,18 +1,7 @@
 {
   "provider": "skydance-media",
   "sources": [
-    "skydance-media-categories-api-openapi.yml",
-    "skydance-media-comments-api-openapi.yml",
-    "skydance-media-media-api-openapi.yml",
-    "skydance-media-pages-api-openapi.yml",
-    "skydance-media-posts-api-openapi.yml",
-    "skydance-media-search-api-openapi.yml",
-    "skydance-media-settings-api-openapi.yml",
-    "skydance-media-statuses-api-openapi.yml",
-    "skydance-media-tags-api-openapi.yml",
-    "skydance-media-taxonomies-api-openapi.yml",
-    "skydance-media-types-api-openapi.yml",
-    "skydance-media-users-api-openapi.yml"
+    "_ae-authored/skydance-media-content-openapi.yml"
   ],
   "outputs": [
     "skydance-media-categories-api-openapi.yml",
@@ -32,7 +21,22 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "skydance-media-content-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "skydance-media-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-statuses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-taxonomies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "skydance-media-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
