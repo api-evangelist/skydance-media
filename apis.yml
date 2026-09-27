@@ -56,204 +56,20 @@ tags:
 - Content
 - WordPress
 apis:
-- aid: skydance-media:skydance-media-categories-api
-  name: Skydance Media Categories API
-  description: The Categories API from Skydance Media — 2 operation(s) for categories.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
+- aid: skydance-media:skydance-com-website-wordpress-rest
+  name: Skydance Media Website (WordPress REST)
+  description: 'The public WordPress REST API (wp-json) of the Skydance Media website at skydance.com:
+    the route index of the site''s content management system, catalogued as one site surface rather than
+    as separate APIs.'
+  baseURL: https://skydance.com/wp-json
   tags:
-  - Categories
+  - WordPress
+  x-surface: platform-generated
   properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-categories-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-comments-api
-  name: Skydance Media Comments API
-  description: The Comments API from Skydance Media — 2 operation(s) for comments.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Comments
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-comments-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-media-api
-  name: Skydance Media API
-  description: The Media API from Skydance Media — 2 operation(s) for media.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Media
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-media-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-pages-api
-  name: Skydance Media Pages API
-  description: The Pages API from Skydance Media — 2 operation(s) for pages.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Pages
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-pages-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-posts-api
-  name: Skydance Media Posts API
-  description: The Posts API from Skydance Media — 2 operation(s) for posts.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Posts
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-posts-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-search-api
-  name: Skydance Media Search API
-  description: The Search API from Skydance Media — 1 operation(s) for search.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Search
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-search-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-settings-api
-  name: Skydance Media Settings API
-  description: The Settings API from Skydance Media — 1 operation(s) for settings.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Settings
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-settings-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-statuses-api
-  name: Skydance Media Statuses API
-  description: The Statuses API from Skydance Media — 2 operation(s) for statuses.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Status
-  tags_raw:
-  - Statuses
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-statuses-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-tags-api
-  name: Skydance Media Tags API
-  description: The Tags API from Skydance Media — 2 operation(s) for tags.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Tags
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-tags-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-taxonomies-api
-  name: Skydance Media Taxonomies API
-  description: The Taxonomies API from Skydance Media — 2 operation(s) for taxonomies.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - taxonomies
-  tags_raw:
-  - Taxonomies
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-taxonomies-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-types-api
-  name: Skydance Media Types API
-  description: The Types API from Skydance Media — 2 operation(s) for types.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - Types
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-types-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
-- aid: skydance-media:skydance-media-users-api
-  name: Skydance Media Users API
-  description: The Users API from Skydance Media — 3 operation(s) for users.
-  humanURL: https://skydance.com/
-  baseURL: https://skydance.com/wp-json/wp/v2
-  tags:
-  - User
-  tags_raw:
-  - Users
-  properties:
-  - type: OpenAPI
-    url: openapi/skydance-media-users-api-openapi.yml
-  - type: DataModel
-    url: data-model/skydance-media-data-model.yml
-  - type: ErrorCatalog
-    url: errors/skydance-media-problem-types.yml
-  - type: Examples
-    url: examples/skydance-media-examples.yml
+  - type: Documentation
+    url: https://skydance.com/wp-json
+  x-platform: wordpress
+  x-platform-surface: rest
 x-enrichment:
   date: '2026-08-05'
   status: enriched
@@ -327,3 +143,7 @@ common:
   url: https://www.youtube.com/skydance
 - type: SecondaryMarket
   url: https://forgeglobal.com/skydance-media_stock/
+- type: DataModel
+  url: data-model/skydance-media-data-model.yml
+- type: ErrorCatalog
+  url: errors/skydance-media-problem-types.yml
