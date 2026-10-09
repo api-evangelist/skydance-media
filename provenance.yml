@@ -9,78 +9,6 @@ artifacts:
   authentication/skydance-media-authentication.yml:
     method: derived
     evidence: declared in the artifact
-  collections/skydance-media-categories-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-categories-api
-  collections/skydance-media-categories-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-categories-api
-  collections/skydance-media-comments-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-comments-api
-  collections/skydance-media-comments-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-comments-api
-  collections/skydance-media-media-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-media-api
-  collections/skydance-media-media-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-media-api
-  collections/skydance-media-pages-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-pages-api
-  collections/skydance-media-pages-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-pages-api
-  collections/skydance-media-posts-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-posts-api
-  collections/skydance-media-posts-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-posts-api
-  collections/skydance-media-search-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-search-api
-  collections/skydance-media-search-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-search-api
-  collections/skydance-media-settings-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-settings-api
-  collections/skydance-media-settings-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-settings-api
-  collections/skydance-media-statuses-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-statuses-api
-  collections/skydance-media-statuses-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-statuses-api
-  collections/skydance-media-tags-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-tags-api
-  collections/skydance-media-tags-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-tags-api
-  collections/skydance-media-taxonomies-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-taxonomies-api
-  collections/skydance-media-taxonomies-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-taxonomies-api
-  collections/skydance-media-types-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-types-api
-  collections/skydance-media-types-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-types-api
-  collections/skydance-media-users-api.opencollection.json:
-    method: derived
-    evidence: openapi/skydance-media-users-api
-  collections/skydance-media-users-api.postman_collection.json:
-    method: derived
-    evidence: openapi/skydance-media-users-api
   conformance/skydance-media-conformance.yml:
     method: derived
     evidence: declared in the artifact
@@ -93,58 +21,10 @@ artifacts:
   errors/skydance-media-problem-types.yml:
     method: unknown
     evidence: no authorship recorded
-  examples/skydance-media-examples.yml:
+  front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-07T135032.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T093022.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T111628.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-11T211707.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-12T193225.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-17T064519.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T080027.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T082702.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T114122.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T165047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T191845.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T205517.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-21T110057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T064859.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T171257.yml:
+  kin/checks-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-25T125852.yml:
@@ -231,48 +111,129 @@ artifacts:
   kin/score-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T200636.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T213054.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T214843.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T232836.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T204815.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T222408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T062655.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T080032.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T204651.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T221936.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-13T214537.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T064754.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T210656.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T225847.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T211329.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T230249.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T210549.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T225339.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T211151.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T233623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T205255.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T231945.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T165737.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T193153.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T205903.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T232958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T211425.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T233935.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-22T213221.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-23T000603.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T064009.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T090406.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/skydance-media-lifecycle.yml:
     method: unknown
     evidence: no authorship recorded
   llms/skydance-media-llms.txt:
     method: generated
     evidence: carries an API Evangelist house phrase
-  openapi/skydance-media-categories-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-comments-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-media-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-pages-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-posts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-search-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-settings-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-statuses-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-tags-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-taxonomies-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-types-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/skydance-media-users-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
   overlays/skydance-media-content-overlay.yaml:
     method: generated
     evidence: declared in the artifact
